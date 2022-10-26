@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {Box} from '@mui/material';
-import VideoDetail from './components/VideoDetail';
+
+import { Navbar,VideoDetail, ChannelDetail, Feed, SearchFeed } from './components';
 
 const App = () => (
     <BrowserRouter>
         <Box sx={{background:'#000'}}>
-            Navbar
+            <Navbar />
             {/* Routes is a built-in component by react router dom */}
             <Routes>
                 <Route path="/" exact element={<Feed />} />

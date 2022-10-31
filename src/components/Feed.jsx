@@ -7,6 +7,15 @@ import {fetchFromAPI} from '../utils/fetchFromAPI';
 
 
 const Feed = () => {
+
+  const [selectedCategory,setSelectedCategory] = useState("New");
+
+  // useEffect is a lifecycle hook in which the code in this function will only run when we change the second parameter 
+  useEffect(()=>{
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`) //all the string inside `` are called template string
+  },[selectedCategory]);//recall the fetchFromApi function whenerver we change the selected category 
+
+
   return (
     <Stack
       sx={{
@@ -20,7 +29,10 @@ const Feed = () => {
           px: {sx: 0, md: 2}
         }}  
       >
-        <SideBar />
+        <SideBar 
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
         <Typography
           variant="body2"
           sx={{
@@ -35,7 +47,7 @@ const Feed = () => {
 
       <Box p={2} sx={{overflowY: 'auto', height: '90vh', flex: 2}}>
         <Typography variant='h4' fontWeight="bold" mb={2} sx={{color: 'white'}}>
-           New <span style={{color: '#f31503'}}>videos</span>
+           {selectedCategory} <span style={{color: '#f31503'}}>videos</span>
         </Typography>
         <Videos videos={[]}/>
       </Box>

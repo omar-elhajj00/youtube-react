@@ -9,10 +9,16 @@ import {fetchFromAPI} from '../utils/fetchFromAPI';
 const Feed = () => {
 
   const [selectedCategory,setSelectedCategory] = useState("New");
+  const [videos, setVideos] = useState([]);
 
   // useEffect is a lifecycle hook in which the code in this function will only run when we change the second parameter 
   useEffect(()=>{
-    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`) //all the string inside `` are called template string
+    fetchFromAPI(`search?part=snippet&q=${selectedCategory}`)//all the string inside `` are called template string
+      .then((data) => {
+        console.log(data);
+        setVideos(data.items)
+      } ) //.then contain what will be result of the promise
+       
   },[selectedCategory]);//recall the fetchFromApi function whenerver we change the selected category 
 
 
@@ -49,7 +55,7 @@ const Feed = () => {
         <Typography variant='h4' fontWeight="bold" mb={2} sx={{color: 'white'}}>
            {selectedCategory} <span style={{color: '#f31503'}}>videos</span>
         </Typography>
-        <Videos videos={[]}/>
+        <Videos videos={videos}/>
       </Box>
     
     </Stack>    

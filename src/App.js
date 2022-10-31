@@ -1,26 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import {Box} from '@mui/material';
+import { Navbar, VideoDetail, ChannelDetail, Feed, SearchFeed } from './components';
 
-import { Navbar,VideoDetail, ChannelDetail, Feed, SearchFeed } from './components';
-
-const App = () => (
+const App = () => {
+  return (
     <BrowserRouter>
-        <Box sx={{background:'#000'}}>
+        <Box sx={{backgroundColor:'#000'}}>
             <Navbar />
-            {/* Routes is a built-in component by react router dom */}
+            {/* Routes in built in component by react outer dom */}
             <Routes>
                 <Route path="/" exact element={<Feed />} />
-                {/* if we go to /video/123432 means we're going to go to a specific video page */}
-                <Route path="/video/:id" element={<VideoDetail />} />
-                {/* we can go to specific channel through /channel/1231  */}
+                {/* if we go to /video and then some random sequence of numbers or letter /21f32 , we're going to go to specific video page, and we can render a new element <VideoDetail /> */}
+                <Route path="/video/:id" element={<VideoDetail />}/>
+                {/* if we're going to go to specific channel */}
                 <Route path="/channel/:id" element={<ChannelDetail />} />
-                {/* go to specific searchterm  */}
+                {/* if we're going to have a specific search term */}
                 <Route path="/search/:searchTerm" element={<SearchFeed />} />
             </Routes>
         </Box>
     </BrowserRouter>
-    )
+  )
+}
 
-
-export default App;
+export default App

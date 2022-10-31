@@ -1,12 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import {Box} from '@mui/material';
-
+import ReactDOM  from 'react-dom/client';
 
 import App from './App';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-
 root.render(<App />);

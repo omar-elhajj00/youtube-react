@@ -16,8 +16,8 @@ const Videos = ({videos}) => {
           <Box key={idx}>
             {/* if the item has an id and then the id points to the video id, that means that it is a video so we can say and and and then we want to render a videocard component */}
             {item.id.videoId && <VideoCard video={item} /> }
-
-            {item.id.channelId && <ChannelCard channelDetail={item} /> }
+            {/* if the item has an id and then id points to channel id ,  it means it is a channel */}
+            {/* {item.id.channelId && <ChannelCard channelDetail={item} /> } */}
 
 
           </Box>

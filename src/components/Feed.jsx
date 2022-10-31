@@ -9,7 +9,7 @@ const Feed = () => {
   return (
     <Stack
       sx={{
-        flexDirection: {sx: 'column',medium:'row' } //on medium devices and larger the flexDirection property is going to set to row 
+        flexDirection: {sx: 'column',md:'row' } //on medium devices and larger the flexDirection property is going to set to row 
       }}
     >
       <Box 

@@ -7,7 +7,13 @@ import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoCha
 const VideoCard = ({video: {id: {videoId}, snippet}}) => {
   console.log(videoId, snippet);
   return (
-    <Card>
+    <Card 
+      sx={{
+        width: {md: '320px', xs: '100%'},
+        boxShadow: 'none',
+        borderRadius: 0 
+      }}
+    >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         {/* make sure to put these question marks before every dot because that way we're not going to get any errors, it's just going to be undefined */}
         <CardMedia 
@@ -33,6 +39,12 @@ const VideoCard = ({video: {id: {videoId}, snippet}}) => {
               <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl}>
                 <Typography variant="subtitle2" fontWeight="bold" color="gray">
                   {snippet?.channelTitle.slice(0,60) || demoChannelTitle.slice(0,60)} {/* slice from 0 to 60 because some titles are going to be a bit too long */}
+                  <CheckCircle 
+                    sx={{
+                      fontSize: 12,
+                      color: 'gray',
+                      ml: '5px'
+                    }} />
                 </Typography>
               </Link>
           </CardContent>

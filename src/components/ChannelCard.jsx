@@ -9,7 +9,12 @@ const ChannelCard = ({channelDetail}) => (
       sx={{
         boxShadow: 'none',
         borderRadius: '20px',
-
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: {xs: '360px', md: '320px'},
+        height: '326px',
+        margin: 'auto'
       }}
     >
       <Link to={`/channel/${channelDetail?.id?.channelId}`}>
@@ -28,8 +33,25 @@ const ChannelCard = ({channelDetail}) => (
             sx={{
               borderRadius: '50%',
               height: '180px',
-              width: '180px'
+              width: '180px',
+              mb: 2,
+              border: '1px solid #e3e3e3'
             }} />
+
+            <Typography variant="h6">
+              {channelDetail?.snippet?.title}
+              <CheckCircle 
+                    sx={{
+                      fontSize: 14,
+                      color: 'gray',
+                      ml: '5px'
+                    }} />
+            </Typography>
+            {channelDetail?.statistics?.subscriberCount &&(
+                  <Typography>
+                    {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString} Subscribers
+                  </Typography>
+                )}
 
         </CardContent>
       </Link>

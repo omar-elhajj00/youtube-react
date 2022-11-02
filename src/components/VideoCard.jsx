@@ -4,6 +4,7 @@ import { Typography, Card, CardMedia, CardContent} from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
 
 import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle } from '../utils/constants';
+
 const VideoCard = ({video: {id: {videoId}, snippet}}) => {
   console.log(videoId, snippet);
   return (
@@ -18,7 +19,7 @@ const VideoCard = ({video: {id: {videoId}, snippet}}) => {
         {/* make sure to put these question marks before every dot because that way we're not going to get any errors, it's just going to be undefined */}
         <CardMedia 
           image={snippet?.thumbnails?.high?.url}
-          alt={snippet?.title}
+          alt={snippet?.title}    
           sx={{
             width:358,
             height:180 
@@ -35,17 +36,18 @@ const VideoCard = ({video: {id: {videoId}, snippet}}) => {
                   {snippet?.title.slice(0,60) ||demoVideoTitle.slice(0,60)} {/* slice from 0 to 60 because some titles are going to be a bit too long */}
                 </Typography>
               </Link>
-              {/* link to channel Id */}
+              {/* link to channel Id */} 
               <Link to={snippet?.channelId ? `/channel/${snippet?.channelId}` : demoChannelUrl}>
                 <Typography variant="subtitle2" fontWeight="bold" color="gray">
                   {snippet?.channelTitle.slice(0,60) || demoChannelTitle.slice(0,60)} {/* slice from 0 to 60 because some titles are going to be a bit too long */}
                   <CheckCircle 
                     sx={{
-                      fontSize: 12,
+                      fontSize: 14,
                       color: 'gray',
                       ml: '5px'
                     }} />
                 </Typography>
+                
               </Link>
           </CardContent>
       </Link>

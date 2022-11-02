@@ -12,7 +12,7 @@ const SearchFeed = () => {
 
   // useEffect is a lifecycle hook in which the code in this function will only run when we change the second parameter 
   useEffect(()=>{
-    fetchFromAPI(`search?part=snippet&q=${}`)//all the string inside `` are called template string
+    fetchFromAPI(`search?part=snippet&q=`)//all the string inside `` are called template string
       .then((data) => {
         console.log(data);
         setVideos(data.items)
@@ -24,11 +24,11 @@ const SearchFeed = () => {
   return (
     <Box p={2} sx={{overflowY: 'auto', height: '90vh', flex: 2}}>
         <Typography variant='h4' fontWeight="bold" mb={2} sx={{color: 'white'}}>
-            {selectedCategory} <span style={{color: '#f31503'}}>videos</span>
+            Search Results for: <span style={{color: '#f31503'}}>videos</span>
         </Typography>
         <Videos videos={videos}/>
     </Box>  
   )
 }
 
-export default Feed
+export default SearchFeed

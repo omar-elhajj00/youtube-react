@@ -16,9 +16,8 @@ const SearchFeed = () => {
   useEffect(()=>{
     fetchFromAPI(`search?part=snippet&q=${searchTerm}`)//all the string inside `` are called template string
       .then((data) => {
-        console.log(data);
         setVideos(data.items)
-      } ) //.then contain what will be result of the promise
+      }) //.then contain what will be result of the promise
        
   },[searchTerm]);//recall the fetchFromApi function whenerver we change the search term
 
@@ -26,7 +25,7 @@ const SearchFeed = () => {
   return (
     <Box p={2} sx={{overflowY: 'auto', height: '90vh', flex: 2}}>
         <Typography variant='h4' fontWeight="bold" mb={2} sx={{color: 'white'}}>
-            Search Results for: <span style={{color: '#f31503'}}>{searchTerm}</span> Videos
+            Search Results for: <span style={{color: '#f31503'}}> {searchTerm} </span> Videos
         </Typography>
         <Videos videos={videos}/>
     </Box>  

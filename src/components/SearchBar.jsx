@@ -33,7 +33,7 @@ const SearchBar = () => {
     >
         <input 
             className="search-bar"
-            placeHolder="Search..."
+            placeholder="Search..."
             type="text" 
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}

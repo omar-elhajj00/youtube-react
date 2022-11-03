@@ -5,17 +5,22 @@ import { ImportantDevices } from '@mui/icons-material';
 import { Typography, Stack, Box } from '@mui/material';
 import { CheckCircle } from '@mui/icons-material';
 
-import {Video} from './';
+import {Videos} from './';
 import { fetchFromAPI } from '../utils/fetchFromAPI';
 
 const VideoDetail = () => {
 
   const [videoDetail, setVideoDetail] = useState(null);
+  // useState for recommended videos 
+  const [videos, setVideos] = useState(null);
   const {id} =useParams();
 
   useEffect(()=>{
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`)
       .then((data)=> setVideoDetail(data.items[0]));
+    //fetch the recommended videos 
+    fetchFromAPI(`search?part=snippet&relatedToVideoID=${id}&type=video`)
+      .then((data) => setVideos(data.items))
   },[id]);
 
   if(!videoDetail?.snippet) return 'Loading...';
@@ -58,7 +63,14 @@ const VideoDetail = () => {
             </Stack> 
           </Box>
         </Box>
-      </Stack>      
+
+      {/* recommended videos */}
+      <Box px={2} py={{md: 1, xs: 5}} justifyContent="center" alignItems="center">
+        <Videos videos={videos} direction="column" />  
+      </Box>
+
+      </Stack>    
+    
     </Box>
   )
 }

@@ -3,11 +3,12 @@ import {Stack , Box} from "@mui/material";
 
 import {VideoCard, ChannelCard} from './';
 
-const Videos = ({videos}) => {
+const Videos = ({videos, direction}) => {
+  if(!videos?.length) return "Loading...";
   return (
     
     <Stack 
-      direction="row"
+      direction={direction || "row"}
       flexWrap="wrap"
       justifyContent="start"
       gap={2}
@@ -18,11 +19,8 @@ const Videos = ({videos}) => {
             {item.id.videoId && <VideoCard video={item} /> }
             {/* if the item has an id and then id points to channel id ,  it means it is a channel */}
             {item.id.channelId && <ChannelCard channelDetail={item} /> }
-
-
           </Box>
         )
-
         )}
     </Stack>
   )
